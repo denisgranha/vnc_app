@@ -1,0 +1,43 @@
+<ion-view title={{evento.post_title}} cache-view="false">
+    <ion-content class="has-header">
+        <div class="list card">
+            <div class="item item-avatar">
+
+                <p>Data: {{evento.start_date*1000 | date}}</p>
+                <p>Hora inicio: {{evento.start_date*1000 | date:"HH:mm"}}</p>
+                <p>Prezo: {{evento.price}}</p>
+                <p>Lugar: {{evento.location_name}}</p>
+            </div>
+            <div class="item item-image">
+                <img ng-src={{evento.image}} ng-show="evento.image">
+            </div>
+
+            <div class="item item-body">
+
+
+                <p ng-bind-html="evento.post_content"></p>
+                <h2>
+                    <small>
+                        {{evento.location}}
+                    </small>
+                </h2>
+
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="shareAnywhere()">
+                    <i class="icon ion-share"></i>
+                    Compartir
+                </a>
+
+                <a ng-click="window.open(evento.guid, '_blank', 'location=yes')" class="tab-item" target="_blank" >
+                    <i class="icon ion-earth"></i>
+                    Ver en Web
+                </a>
+            </div>
+
+        </div>
+    </ion-content>
+
+
+</ion-view>

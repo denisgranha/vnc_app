@@ -1,0 +1,15 @@
+<ion-view title="Resultados de pesquisar: <strong>{{query}}</strong>" cache-view="false">
+    <ion-content class="has-header" >
+
+
+        <ul class="list">
+            <li class="item" ng-repeat="evento in eventos" ng-click="goEvento(evento.ID)">
+                {{evento.post_title}}
+                -
+                <small ng-repeat="category in evento.categories">
+                    {{category.name}}
+                </small>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

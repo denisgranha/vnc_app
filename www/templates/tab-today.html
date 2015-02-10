@@ -1,0 +1,72 @@
+<ion-view hide-nav-bar="true" title="Vivir Na Coruña" cache-view="false">
+
+    <ion-side-menus>
+        <!-- Center content -->
+        <ion-side-menu-content>
+
+
+                <!--{{device}}-->
+
+
+                <form ng-submit="buscar(texto)">
+                    <div class="bar bar-header item-input-inset">
+
+                        <label class="item-input-wrapper">
+                            <i class="icon ion-ios7-search placeholder-icon"></i>
+                            <input type="search" placeholder="Escreva texto..." ng-model="texto">
+                        </label>
+
+                        <input type="submit" value="Pesquisar" class="button button-clear" ng-hide="false"/>
+
+
+                    </div>
+                </form>
+                <div class="div-wrapper">
+                    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                        <ui-gmap-markers
+                                models='filtrados'
+                                idKey="'ID'"
+                                coords="'coords'"
+                                options="'options'"
+                                click="'open'"
+                                >
+                        </ui-gmap-markers>
+                    </ui-gmap-google-map>
+                </div>
+
+                <div class="list">
+
+
+                    <div class="button-bar item">
+                        <button class="button button-clear col-10" ng-click="toggleLeft()">
+                            <i class="icon ion-navicon-round">
+
+                            </i>
+                        </button>
+
+                        <button class="button button-clear button-positive col-10" ng-click="geolocate()">
+                            <i class="icon ion-location">
+
+                            </i>
+                        </button>
+
+                        <button class="button" ng-class="prices[selected_price].class" ng-click="changue_price()"> {{prices[selected_price].name}}</button>
+                    </div>
+
+                </div>
+
+
+
+
+        </ion-side-menu-content>
+        <!-- Left menu -->
+        <ion-side-menu side="left">
+            <div class="list">
+                <li class="item " ng-repeat="category in categories" >
+                    {{category.name}}
+                </li>
+            </div>
+        </ion-side-menu>
+    </ion-side-menus>
+
+</ion-view>

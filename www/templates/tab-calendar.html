@@ -1,0 +1,19 @@
+<ion-view title="Axenda" cache-view="false">
+  <ion-content class="has-header" >
+
+      <ul class="list">
+
+          <div class="item item-divider">
+              <label class="item item-input">
+                  <span class="input-label">Data</span>
+                  <input type="date" ng-model="data_evento" ng-change="showEvents(data_evento)">
+              </label>
+
+          </div>
+          <li class="item item-thumbnail-left" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
+              <img ng-src={{evento.image}} ng-show="evento.image">
+              {{evento.post_title}}
+          </li>
+      </ul>
+  </ion-content>
+</ion-view>
