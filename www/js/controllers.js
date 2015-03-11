@@ -2,18 +2,6 @@ angular.module('vivirnacoruna.controllers', [])
 
 .controller('DashCtrl', function($scope,Events,uiGmapGoogleMapApi,Location,$state,$ionicLoading,$rootScope,$ionicSideMenuDelegate) {
 
-        $scope.device = $rootScope.device;
-
-        $scope.toggleLeft = function() {
-            $ionicSideMenuDelegate.toggleLeft();
-        };
-
-        $scope.geolocate = function(){
-            navigator.geolocation.getCurrentPosition(function(position){
-                $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 15 };
-                $scope.$apply();
-            });
-        };
 
         $scope.eventos = [];
 
@@ -26,9 +14,9 @@ angular.module('vivirnacoruna.controllers', [])
 
                 $scope.eventos[index].options =
                 {
-                    labelContent: $scope.eventos[index].post_title,
-                    //labelAnchor: "5 0",
-                    labelClass: "labels"
+                    //labelContent: $scope.eventos[index].post_title,
+                    labelAnchor: "5 0"
+                    //labelClass: "labels"
                 }
 
                 $scope.eventos[index].open=  function(){
@@ -59,6 +47,10 @@ angular.module('vivirnacoruna.controllers', [])
 
             $ionicLoading.hide();
 
+        },
+        function(error){
+            //TODO Notificar error
+            $ionicLoading.hide();
         });
 
         uiGmapGoogleMapApi.then(function(maps) {
@@ -127,10 +119,16 @@ angular.module('vivirnacoruna.controllers', [])
         });
 })
 
-.controller('EventoDetailCtrl', function($scope,$stateParams,Events,$ionicLoading) {
+.controller('EventoDetailCtrl', function($scope,$stateParams,Events,$ionicLoading,$rootScope) {
 
         $scope.shareAnywhere = function() {
-            window.plugins.socialsharing.share($scope.evento.post_content, $scope.evento.title, $scope.evento.image, $scope.evento.guid)
+
+            //Compartir la imagen en principio no es muy útil ya que retrasa bastante el compartir el evento
+            /*if($scope.evento.image){
+                window.plugins.socialsharing.share($scope.evento.post_content, $scope.evento.title, $scope.evento.image, $scope.evento.guid)}
+            else
+            */
+                window.plugins.socialsharing.share($scope.evento.post_content, null,null, $scope.evento.guid)
         }
 
         $ionicLoading.show({
@@ -138,10 +136,18 @@ angular.module('vivirnacoruna.controllers', [])
             animation: 'fade-in'
         });
 
+        $scope.openLink = function(){
+            window.open($rootScope.backend + "/?p="+$scope.evento.ID, '_system');
+        }
+
 
         Events.get($stateParams.eventoId,function(response){
             $ionicLoading.hide();
             $scope.evento = response;
+        },
+        function(error){
+            //TODO Notificar error
+            $ionicLoading.hide();
         });
 })
 
@@ -168,6 +174,10 @@ angular.module('vivirnacoruna.controllers', [])
             Events.interval(start.getTime(),end.getTime(),function(response){
                 $ionicLoading.hide();
                 $scope.eventos = response;
+            },
+            function(error){
+                //TODO Notificar error
+                $ionicLoading.hide();
             });
 
         };
@@ -193,6 +203,10 @@ angular.module('vivirnacoruna.controllers', [])
 
         Events.search($scope.query,function(result){
             $scope.eventos = result;
+            $ionicLoading.hide();
+        },
+        function(error){
+            //TODO Notificar error
             $ionicLoading.hide();
         });
 

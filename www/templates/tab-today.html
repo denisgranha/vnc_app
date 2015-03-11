@@ -1,11 +1,5 @@
-<ion-view hide-nav-bar="true" title="Vivir Na Coruña" cache-view="false">
-
-    <ion-side-menus>
-        <!-- Center content -->
-        <ion-side-menu-content>
-
-
-                <!--{{device}}-->
+<ion-view  title="Vivir Na Coruña" cache-view="false">
+    <ion-content>
 
 
                 <form ng-submit="buscar(texto)">
@@ -13,10 +7,10 @@
 
                         <label class="item-input-wrapper">
                             <i class="icon ion-ios7-search placeholder-icon"></i>
-                            <input type="search" placeholder="Escreva texto..." ng-model="texto">
+                            <input type="search" placeholder="Escriba texto..." ng-model="texto">
                         </label>
 
-                        <input type="submit" value="Pesquisar" class="button button-clear" ng-hide="false"/>
+                        <input type="submit" value="Buscar" class="button button-clear" ng-hide="false"/>
 
 
                     </div>
@@ -38,35 +32,23 @@
 
 
                     <div class="button-bar item">
-                        <button class="button button-clear col-10" ng-click="toggleLeft()">
-                            <i class="icon ion-navicon-round">
-
-                            </i>
-                        </button>
-
-                        <button class="button button-clear button-positive col-10" ng-click="geolocate()">
-                            <i class="icon ion-location">
-
-                            </i>
-                        </button>
-
                         <button class="button" ng-class="prices[selected_price].class" ng-click="changue_price()"> {{prices[selected_price].name}}</button>
                     </div>
+
+                    <label class="item item-input item-select text-center">
+                        <div class="input-label">
+                            Categoría:
+                        </div>
+                        <select>
+                            <option ng-repeat="category in categories">{{category.name}}</option>
+                        </select>
+                    </label>
 
                 </div>
 
 
+    </ion-content>
 
 
-        </ion-side-menu-content>
-        <!-- Left menu -->
-        <ion-side-menu side="left">
-            <div class="list">
-                <li class="item " ng-repeat="category in categories" >
-                    {{category.name}}
-                </li>
-            </div>
-        </ion-side-menu>
-    </ion-side-menus>
 
 </ion-view>
