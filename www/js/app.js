@@ -9,7 +9,9 @@ angular.module('vivirnacoruna', [   'ionic',
                                     'vivirnacoruna.controllers',
                                     'vivirnacoruna.services',
                                     'uiGmapgoogle-maps',
-                                    'ui.bootstrap'
+                                    'ui.bootstrap',
+                                    'gettext',
+                                    'LocalStorageModule'
 ])
 
 .run(function($ionicPlatform,$rootScope) {
@@ -113,10 +115,10 @@ angular.module('vivirnacoruna', [   'ionic',
 })
 
 
-.run(function($rootScope){
+    .run(function($rootScope){
         $rootScope.backend = "http://vivirnacoruna.es/api/v1";
         //$rootScope.backend = "http://localhost:8080/api/v1";
-})
+    })
 
     .config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
@@ -131,5 +133,13 @@ angular.module('vivirnacoruna', [   'ionic',
 
         // note that you can also chain configs
         $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
+    })
+    .run(function (gettextCatalog,localStorageService) {
+        var previous_language = localStorageService.get("language");
+        if(previous_language){
+            gettextCatalog.setCurrentLanguage(previous_language);
+        }
+        else{
+            gettextCatalog.setCurrentLanguage('gl');
+        }
     });
-

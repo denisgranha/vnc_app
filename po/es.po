@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: www/templates/tabs.html:15
+msgid "Axenda"
+msgstr "Agenda"
+
+#: www/templates/tabs.html:21
+msgid "Axustes"
+msgstr "Ajustes"
+
+#: www/templates/tab-today.html:13
+msgid "Buscar"
+msgstr "Buscar"
+
+#: www/templates/tab-today.html:40
+msgid "Categoría"
+msgstr "Categoría"
+
+#: www/templates/evento-detail.html:30
+msgid "Compartir"
+msgstr "Compartir"
+
+#: www/templates/evento-detail.html:6
+msgid "Data"
+msgstr "Fecha"
+
+#: www/templates/tab-today.html:10
+msgid "Escriba texto..."
+msgstr "Introduzca texto"
+
+#: www/templates/evento-detail.html:7
+msgid "Hora inicio"
+msgstr "Hora inicio"
+
+#: www/templates/evento-detail.html:9
+msgid "Lugar"
+msgstr "Lugar"
+
+#: www/templates/evento-detail.html:8
+msgid "Prezo"
+msgstr "Precio"
+
+#: www/templates/evento-detail.html:35
+msgid "Ver en web"
+msgstr "Ver en web"

@@ -1,0 +1,49 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: www/templates/tabs.html:15
+msgid "Axenda"
+msgstr ""
+
+#: www/templates/tabs.html:21
+msgid "Axustes"
+msgstr ""
+
+#: www/templates/tab-today.html:13
+msgid "Buscar"
+msgstr ""
+
+#: www/templates/tab-today.html:40
+msgid "Categoría"
+msgstr ""
+
+#: www/templates/evento-detail.html:30
+msgid "Compartir"
+msgstr ""
+
+#: www/templates/evento-detail.html:6
+msgid "Data"
+msgstr ""
+
+#: www/templates/tab-today.html:10
+msgid "Escriba texto..."
+msgstr ""
+
+#: www/templates/evento-detail.html:7
+msgid "Hora inicio"
+msgstr ""
+
+#: www/templates/evento-detail.html:9
+msgid "Lugar"
+msgstr ""
+
+#: www/templates/evento-detail.html:8
+msgid "Prezo"
+msgstr ""
+
+#: www/templates/evento-detail.html:35
+msgid "Ver en web"
+msgstr ""

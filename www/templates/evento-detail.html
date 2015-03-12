@@ -3,10 +3,10 @@
         <div class="list card">
             <div class="item item-avatar">
 
-                <p>Data: {{evento.start_date*1000 | date}}</p>
-                <p>Hora inicio: {{evento.start_date*1000 | date:"HH:mm"}}</p>
-                <p>Prezo: {{evento.price}}</p>
-                <p>Lugar: {{evento.location_name}}</p>
+                <p> {{'Data' | translate }}: {{evento.start_date*1000 | date}}</p>
+                <p>{{'Hora inicio' | translate }}: {{evento.start_date*1000 | date:"HH:mm"}}</p>
+                <p>{{'Prezo' | translate }}: {{evento.price}}</p>
+                <p>{{'Lugar' | translate }}: {{evento.location_name}}</p>
             </div>
             <div class="item item-image">
                 <img ng-src={{evento.image}} ng-show="evento.image">
@@ -27,12 +27,12 @@
             <div class="item tabs tabs-secondary tabs-icon-left">
                 <a class="tab-item" ng-click="shareAnywhere()">
                     <i class="icon ion-share"></i>
-                    Compartir
+                    {{'Compartir' | translate }}
                 </a>
 
-                <a ng-click="openLink()" class="tab-item" target="_blank" >
+                <a ng-click="openLink()" class="tab-item"  >
                     <i class="icon ion-earth"></i>
-                    Ver en Web
+                    {{'Ver en web' | translate }}
                 </a>
             </div>
 

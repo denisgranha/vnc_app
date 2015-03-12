@@ -190,7 +190,12 @@ angular.module('vivirnacoruna.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope,gettextCatalog,localStorageService) {
+
+        $scope.setLanguage = function(language){
+            gettextCatalog.setCurrentLanguage(language);
+            localStorageService.set("language",language);
+        };
 })
 
 .controller('SearchResultCtrl', function($scope,$stateParams,Events,$state,$ionicLoading) {
