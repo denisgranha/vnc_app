@@ -3,7 +3,16 @@ angular.module('vivirnacoruna.controllers', [])
 .controller('DashCtrl', function($scope,Events,uiGmapGoogleMapApi,Location,$state,$ionicLoading,$rootScope,$ionicSideMenuDelegate) {
 
 
+        $('.angular-google-map-container').css('height', ($(window).height() / 2));
+
         $scope.eventos = [];
+        $scope.categories = [];
+
+        $scope.filters = {
+            category: "Todas",
+            price: 0
+        }
+
 
         function assignCords(index){
             Location.getCords($scope.eventos[index].location,function(location){
@@ -25,6 +34,7 @@ angular.module('vivirnacoruna.controllers', [])
                 }
             });
         }
+
 
         $scope.buscar = function(texto){
             $state.go("tab.search-result",{query:texto});
@@ -57,66 +67,96 @@ angular.module('vivirnacoruna.controllers', [])
             $scope.map = { center: { latitude: 43.368712, longitude: -8.40146 }, zoom: 15 };
         });
 
-        /*Events.prices(function(precios){
-            $scope.precios = precios;
-        })*/
-        $scope.prices =
-            [
-                {
-                    name:   'Todos',
-                    class:  "button-light"
-                },
+        Events.prices(function(precios){
+            $scope.prices = precios;
+        })
 
-                {
-                    name:   'Gratuitos',
-                    class:  "button-energized"
-                },
 
-                {
-                    name:   "De pago",
-                    class:  "button-positive"
-                }
-            ];
 
-        $scope.selected_price = 0;
         $scope.changue_price = function(){
-            $scope.selected_price = ($scope.selected_price+1) % 3;
-        }
+            $scope.filters.price = ($scope.filters.price+1) % 3;
+        };
 
         Events.categories(function(categories){
             $scope.categories = categories;
-        })
+        });
 
-        $scope.$watch('selected_price', function(newValue, oldValue) {
+        $scope.apply_filters  = function(price,category){
 
+            $scope.filtrados = [];
 
-            if(newValue == 0){
-                //Todos
-                $scope.filtrados = $scope.eventos
+            if(price == 0){
+                //Todos los de la categoria
+                if(category == "Todas"){
+                    $scope.filtrados = $scope.eventos;
+                }
+                else{
+                    for(i=0;i<$scope.eventos.length;i++){
+
+                        for(j=0;j<$scope.eventos[i].categories.length;j++){
+                            if($scope.categories[category].ids.indexOf($scope.eventos[i].categories[j].term_id) > -1){
+                                $scope.filtrados.push($scope.eventos[i]);
+                            }
+                        }
+                    }
+                }
+
             }
 
-            if(newValue == 1){
+            if(price == 1){
                 //Gratuitos
 
                 $scope.filtrados = [];
                 for(i=0;i<$scope.eventos.length;i++){
                     if($scope.eventos[i].price == "de balde"){
-                        $scope.filtrados.push($scope.eventos[i]);
+
+                        if(category == "Todas"){
+                            $scope.filtrados.push($scope.eventos[i]);
+                        }
+                        else {
+                            for (j = 0; j < $scope.eventos[i].categories.length; j++) {
+                                if ($scope.categories[category].ids.indexOf($scope.eventos[i].categories[j].term_id) > -1) {
+                                    $scope.filtrados.push($scope.eventos[i]);
+                                }
+                            }
+                        }
                     }
                 }
             }
 
-            if(newValue == 2){
+            if(price == 2){
                 //De Pago
 
                 $scope.filtrados = [];
                 for(i=0;i<$scope.eventos.length;i++){
                     if($scope.eventos[i].price != "de balde" && $scope.eventos[i].price != ""){
-                        $scope.filtrados.push($scope.eventos[i]);
+
+                        if(category == "Todas"){
+                            $scope.filtrados.push($scope.eventos[i]);
+                        }
+                        else {
+                            for (j = 0; j < $scope.eventos[i].categories.length; j++) {
+                                if ($scope.categories[category].ids.indexOf($scope.eventos[i].categories[j].term_id) > -1) {
+                                    $scope.filtrados.push($scope.eventos[i]);
+                                }
+                            }
+                        }
                     }
                 }
             }
-        });
+            if(!$scope.$$phase) {
+                $scope.$apply();
+            }
+
+        };
+
+
+
+        $scope.$watchGroup(['filters.category','filters.price'], function(newValue, oldValue,scope) {
+            $scope.apply_filters(newValue[1],newValue[0]);
+        },true);
+
+
 })
 
 .controller('EventoDetailCtrl', function($scope,$stateParams,Events,$ionicLoading,$rootScope) {
@@ -130,6 +170,8 @@ angular.module('vivirnacoruna.controllers', [])
             */
                 window.plugins.socialsharing.share($scope.evento.post_content, null,null, $scope.evento.guid)
         }
+
+
 
         $ionicLoading.show({
             content: '<i class="icon ion-loading-c"></i>',
@@ -149,12 +191,23 @@ angular.module('vivirnacoruna.controllers', [])
             //TODO Notificar error
             $ionicLoading.hide();
         });
+
+        $scope.goMap = function(){
+            window.open("https://www.google.es/maps/place/"+encodeURIComponent($scope.evento.location), '_system');
+        }
 })
 
 .controller('AxendaCtrl', function($scope,Events,dateFilter,$state,$ionicLoading) {
 
 
         $scope.data_evento = new Date();//dateFilter(new Date(), 'yyyy-MM-dd');
+
+        Events.categories(function(categories){
+            $scope.categories = categories;
+        });
+
+        $scope.eventos = [];
+        $scope.eventos2 = [];
 
 
         $scope.showEvents = function(date_selected){
@@ -172,8 +225,23 @@ angular.module('vivirnacoruna.controllers', [])
             });
 
             Events.interval(start.getTime(),end.getTime(),function(response){
+                    $scope.eventos = [];
+                    $scope.eventos2 = [];
                 $ionicLoading.hide();
-                $scope.eventos = response;
+                    for(i=0;i<response.length;i++){
+                        for(j=0;j<response[i].categories.length;j++){
+                            if($scope.categories["Exposicións"].ids.indexOf(response[i].categories[j].term_id) > -1){
+                                //TODO CAMBIAR POR WHILE
+                                j=response[i].categories.length;
+                                $scope.eventos2.push(response[i]);
+                            }
+                            else{
+                                j=response[i].categories.length;
+                                $scope.eventos.push(response[i]);
+                            }
+                        }
+                    }
+
             },
             function(error){
                 //TODO Notificar error

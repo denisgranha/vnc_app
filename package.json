@@ -19,6 +19,7 @@
   "cordovaPlugins": [
     "https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git",
     "https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git",
-    "nl.x-services.plugins.socialsharing"
+    "nl.x-services.plugins.socialsharing",
+    "org.apache.cordova.inappbrowser"
   ]
 }

@@ -16,6 +16,7 @@
                     </div>
                 </form>
                 <div class="div-wrapper">
+
                     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
                         <ui-gmap-markers
                                 models='filtrados'
@@ -32,14 +33,14 @@
 
 
                     <div class="button-bar item">
-                        <button class="button" ng-class="prices[selected_price].class" ng-click="changue_price()"> {{prices[selected_price].name}}</button>
+                        <button class="button" ng-class="prices[filters.price].class" ng-click="changue_price()"> {{prices[filters.price].name}}</button>
                     </div>
 
                     <label class="item item-input item-select text-center">
                         <div class="input-label">
                             {{'Categoría' | translate}}:
                         </div>
-                        <select>
+                        <select ng-model="filters.category">
                             <option ng-repeat="category in categories">{{category.name}}</option>
                         </select>
                     </label>

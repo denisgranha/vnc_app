@@ -1,4 +1,4 @@
-<ion-view title="Axenda" cache-view="false">
+<ion-view title="{{'Axenda' | translate}}" cache-view="false">
   <ion-content class="has-header" >
 
       <ul class="list">
@@ -14,6 +14,16 @@
               <img ng-src={{evento.image}} ng-show="evento.image">
               {{evento.post_title}}
           </li>
+
+          <div class="item item-divider">
+              {{'Inaguracións e Exposicións' | translate}}
+          </div>
+
+          <li class="item item-thumbnail-left" ng-repeat="evento in eventos2 | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
+              <img ng-src={{evento.image}} ng-show="evento.image">
+              {{evento.post_title}}
+          </li>
+
       </ul>
   </ion-content>
 </ion-view>

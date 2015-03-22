@@ -29,14 +29,81 @@ angular.module('vivirnacoruna.services', [])
             $http.get(url).success(callback).error(error);
         },
         prices: function(callback,error){
-            var url = $rootScope.backend + '/prices';
+            callback([
+                {
+                    name:   'Todos',
+                    class:  "button-light"
+                },
 
-            $http.get(url).success(callback).error(error);
+                {
+                    name:   'Gratuitos',
+                    class:  "button-energized"
+                },
+
+                {
+                    name:   "De pago",
+                    class:  "button-positive"
+                }
+            ]);
         },
         categories: function(callback,error){
-            var url = $rootScope.backend + '/categories';
+            callback(
+                {
+                    "Todas" :
+                    {
+                        name: "Todas",
+                        ids: []
+                    },
 
-            $http.get(url).success(callback).error(error);
+                    "Audiovisual" :
+                    {
+                        name: "Audiovisual",
+                        ids: [76,264,261]
+                    },
+
+                    "Charlas":
+                    {
+                        name: "Charlas",
+                        ids: [78]
+                    },
+
+                    "Escénicas" :
+                    {
+                        name: "Escénicas",
+                        ids: [258,259,80,260,81,192]
+                    },
+
+                    "Familiar":
+                    {
+                        name: "Familiar",
+                        ids: [109]
+                    },
+
+                    "Música" :
+                    {
+                        name: "Música",
+                        ids: [69,265,271]
+                    },
+
+                    "Letras" :
+                    {
+                        name: "Letras",
+                        ids: [72,268,267,266,609]
+                    },
+
+                    "Inauguracións":
+                    {
+                        name: "Inauguracións",
+                        ids: [182]
+                    },
+                    "Exposicións":
+                    {
+                        name: "Exposicións",
+                        ids: [93,182]
+                    }
+                }
+
+            )
         }
 
     }
