@@ -1,9 +1,13 @@
 angular.module('vivirnacoruna.controllers', [])
 
-.controller('DashCtrl', function($scope,Events,uiGmapGoogleMapApi,Location,$state,$ionicLoading,$rootScope,$ionicSideMenuDelegate) {
+.controller('DashCtrl', function($scope,Events,uiGmapGoogleMapApi,Location,$state,$ionicLoading,$ionicPopup) {
 
 
-        $('.angular-google-map-container').css('height', ($(window).height() / 2));
+        //Pone el tamaño del mapa via jquery
+        $('.angular-google-map-container').css('height', ($(window).height() / 1.65));
+
+        //Fecha para header de la pagina today
+        $scope.date = new Date();
 
         $scope.eventos = [];
         $scope.categories = [];
@@ -11,7 +15,7 @@ angular.module('vivirnacoruna.controllers', [])
         $scope.filters = {
             category: "Todas",
             price: 0
-        }
+        };
 
 
         function assignCords(index){
@@ -32,6 +36,11 @@ angular.module('vivirnacoruna.controllers', [])
                     //console.log($scope.eventos[index]);
                     $state.go("tab.evento-detail",{eventoId:$scope.eventos[index].ID});
                 }
+
+
+                Events.getCategory($scope.eventos[index],function(category){
+                    $scope.eventos[index].icon = category.icon;
+                });
             });
         }
 
@@ -157,6 +166,24 @@ angular.module('vivirnacoruna.controllers', [])
         },true);
 
 
+        //POPUP DE CATEGORIAS
+        var myPopup;
+        $scope.showPopup = function(){
+            myPopup = $ionicPopup.show({
+                templateUrl: 'templates/categories.html',
+                title: 'Seleccione a categoría desexada',
+                scope: $scope,
+                buttons: [
+                    { text: 'Cancelar' }
+                ]
+            });
+        };
+
+        $scope.selectCategory = function(category){
+            $scope.filters.category = category.name;
+            myPopup.close();
+        }
+
 })
 
 .controller('EventoDetailCtrl', function($scope,$stateParams,Events,$ionicLoading,$rootScope) {
@@ -209,6 +236,12 @@ angular.module('vivirnacoruna.controllers', [])
         $scope.eventos = [];
         $scope.eventos2 = [];
 
+        $scope.options = {
+            format: 'yyyy-mm-dd', // ISO formatted date
+            onClose: function(e) {
+                // do something when the picker closes
+            }
+        }
 
         $scope.showEvents = function(date_selected){
 
@@ -255,6 +288,8 @@ angular.module('vivirnacoruna.controllers', [])
         $scope.goEvento = function(id){
             $state.go("tab.evento-axenda",{eventoId:id});
         }
+
+
 
 })
 

@@ -1,21 +1,11 @@
 <ion-view  title="Vivir Na Coruña" cache-view="false">
+    <ion-nav-title>
+        <span class="dia">{{date | date:'d'}}</span>
+        <span class="mes">{{date | date:'MMM'}}'</span>
+        <span class="ano">{{date | date:'yy'}}</span>
+    </ion-nav-title>
     <ion-content>
 
-
-                <form ng-submit="buscar(texto)">
-                    <div class="bar bar-header item-input-inset">
-
-                        <label class="item-input-wrapper">
-                            <i class="icon ion-ios7-search placeholder-icon"></i>
-                            <input type="search" placeholder="{{'Escriba texto...' | translate}}" ng-model="texto">
-                        </label>
-
-                        <input type="submit" value="{{'Buscar' | translate}}" class="button button-clear" ng-hide="false"/>
-
-
-                    </div>
-                </form>
-                <div class="div-wrapper">
 
                     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
                         <ui-gmap-markers
@@ -24,28 +14,50 @@
                                 coords="'coords'"
                                 options="'options'"
                                 click="'open'"
+                                doRebuildAll="'true'"
+                                icon="'icon'"
                                 >
                         </ui-gmap-markers>
                     </ui-gmap-google-map>
+
+        <button class="boton-prezo button" ng-class="prices[filters.price].class" ng-click="changue_price()"> {{prices[filters.price].name}}</button>
+
+
+
+               <div class="list list-inset">
+
+               <div class="color-vnc boton-categorias item item-input" ng-click="showPopup()">
+                    {{categories[filters.category].name}}
+                   &nbsp;
+                   <i class="icon ion-arrow-down-b "></i>
                 </div>
+                   <!--
+                   <label class="item item-input item-select text-center color-vnc">
+                       <div class="input-label">
+                               {{'Categoría' | translate}}:
+                       </div>
 
-                <div class="list">
+                       <select ng-model="filters.category" class="color-vnc">
+                           <option ng-repeat="category in categories">{{category.name}}</option>
+                       </select>
+                   </label>
+                   -->
+               </div>
 
 
-                    <div class="button-bar item">
-                        <button class="button" ng-class="prices[filters.price].class" ng-click="changue_price()"> {{prices[filters.price].name}}</button>
-                    </div>
 
-                    <label class="item item-input item-select text-center">
-                        <div class="input-label">
-                            {{'Categoría' | translate}}:
-                        </div>
-                        <select ng-model="filters.category">
-                            <option ng-repeat="category in categories">{{category.name}}</option>
-                        </select>
-                    </label>
 
-                </div>
+
+        <form ng-submit="buscar(texto)">
+
+
+            <div class="list list-inset">
+                <label class="item item-input buscar">
+                    <input type="text" ng-model="texto">
+                    <i class="icon ion-search placeholder-icon"></i>
+                </label>
+            </div>
+        </form>
 
 
     </ion-content>

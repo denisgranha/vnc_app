@@ -2,6 +2,69 @@ angular.module('vivirnacoruna.services', [])
 
 .factory('Events', function($http,$rootScope) {
 
+        var categories = {
+            "Todas" :
+            {
+                name: "Todas",
+                ids: []
+            },
+
+            "Audiovisual" :
+            {
+                name: "Audiovisual",
+                ids: [76,264,261],
+                icon: "img/audiovisual.svg"
+            },
+
+            "Charlas":
+            {
+                name: "Charlas",
+                ids: [78],
+                icon: "img/charlas.svg"
+            },
+
+            "Escénicas" :
+            {
+                name: "Escénicas",
+                ids: [258,259,80,260,81,192],
+                icon: "img/escenicas.svg"
+            },
+
+            "Familiar":
+            {
+                name: "Familiar",
+                ids: [109],
+                icon: "img/familiar.svg"
+            },
+
+            "Música" :
+            {
+                name: "Música",
+                ids: [69,265,271],
+                icon: "img/musica.svg"
+            },
+
+            "Letras" :
+            {
+                name: "Letras",
+                ids: [72,268,267,266,609],
+                icon: "img/general.svg"
+            },
+
+            "Inauguracións":
+            {
+                name: "Inauguracións",
+                ids: [182],
+                icon: "img/inauguraciones.svg"
+            },
+            "Exposicións":
+            {
+                name: "Exposicións",
+                ids: [93,182],
+                icon: "img/exposiciones.svg"
+            }
+        };
+
     return {
         today: function(callback,error){
 
@@ -47,63 +110,20 @@ angular.module('vivirnacoruna.services', [])
             ]);
         },
         categories: function(callback,error){
-            callback(
-                {
-                    "Todas" :
-                    {
-                        name: "Todas",
-                        ids: []
-                    },
+            callback(categories);
+        },
 
-                    "Audiovisual" :
-                    {
-                        name: "Audiovisual",
-                        ids: [76,264,261]
-                    },
+        getCategory: function(event,callback){
+            for (var category in categories){
 
-                    "Charlas":
-                    {
-                        name: "Charlas",
-                        ids: [78]
-                    },
-
-                    "Escénicas" :
-                    {
-                        name: "Escénicas",
-                        ids: [258,259,80,260,81,192]
-                    },
-
-                    "Familiar":
-                    {
-                        name: "Familiar",
-                        ids: [109]
-                    },
-
-                    "Música" :
-                    {
-                        name: "Música",
-                        ids: [69,265,271]
-                    },
-
-                    "Letras" :
-                    {
-                        name: "Letras",
-                        ids: [72,268,267,266,609]
-                    },
-
-                    "Inauguracións":
-                    {
-                        name: "Inauguracións",
-                        ids: [182]
-                    },
-                    "Exposicións":
-                    {
-                        name: "Exposicións",
-                        ids: [93,182]
+                for(i=0;i<event.categories.length;i++){
+                    if(categories[category].ids.indexOf(event.categories[i].term_id) > -1){
+                        callback(categories[category]);
+                        break;
                     }
                 }
 
-            )
+            };
         }
 
     }

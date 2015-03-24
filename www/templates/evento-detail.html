@@ -3,10 +3,25 @@
         <div class="list card">
             <div class="item item-avatar">
 
-                <p> {{'Data' | translate }}: {{evento.start_date*1000 | date}}</p>
-                <p>{{'Hora inicio' | translate }}: {{evento.start_date*1000 | date:"HH:mm"}}</p>
-                <p>{{'Prezo' | translate }}: {{evento.price}}</p>
-                <p>{{'Lugar' | translate }}: {{evento.location_name}}</p>
+                <span class="item-note">
+                      {{evento.start_date*1000 | date}}
+                    </span>
+
+                <p>
+                    <i class="icon ion-location"></i>
+                    {{evento.location_name}}
+                    <br>
+                    {{evento.location}}
+                </p>
+                <p>
+                    <i class="icon ion-clock"></i>
+                    {{evento.start_date*1000 | date:"HH:mm"}}
+
+                </p>
+                <p>
+                    <i class="icon ion-information-circled"></i>
+                    {{evento.price}}
+                </p>
             </div>
             <div class="item item-image">
                 <img ng-src={{evento.image}} ng-show="evento.image">
@@ -16,26 +31,21 @@
 
 
                 <p ng-bind-html="evento.post_content"></p>
-                <h2>
-                    <small>
-                        {{evento.location}}
-                    </small>
-                </h2>
 
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" ng-click="shareAnywhere()">
+                <a class="tab-item enlaces" ng-click="shareAnywhere()">
                     <i class="icon ion-share"></i>
                     {{'Compartir' | translate }}
                 </a>
 
-                <a ng-click="openLink()" class="tab-item"  >
+                <a ng-click="openLink()" class="tab-item enlaces"  >
                     <i class="icon ion-earth"></i>
                     {{'Ver en web' | translate }}
                 </a>
 
-                <a ng-click="goMap()" class="tab-item">
+                <a ng-click="goMap()" class="tab-item enlaces">
                     <i class="icon ion-map"></i>
                     {{'Abrir no Mapa' | translate}}
                 </a>

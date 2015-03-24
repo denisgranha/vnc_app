@@ -11,3 +11,70 @@
 .padding-top{
     padding-top: 10%;
 }
+
+
+.background, .background .pane, .background, .background {
+    background-color: #f18c62 !important;
+}
+
+.title, .tabs, .bar,.tabs-default{
+    background-color: #f18c62 !important;
+}
+
+.title{
+    margin: 0px !important;
+}
+
+.color-vnc{
+    background-color: #f18c62 !important;
+}
+
+.buscar{
+    background-color: white !important;
+}
+
+.dia{
+    color: white;
+    font-weight: 300;
+}
+
+.mes{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.ano{
+    color: white;
+    font-weight: 300;
+}
+
+.icono-tab{
+    color: white;
+    opacity: 1;
+}
+
+.enlaces{
+    color: white;
+    opacity: 1;
+;
+}
+
+.boton-prezo{
+    float: right;
+    margin-top: -15%;
+    margin-left: 78%;
+    /* z-index: 7; */
+    position: absolute;
+}
+
+.boton-categorias{
+    color: white;
+    border: 1px solid;
+    border-color: white;
+}
+
+.placeholder-icon:last-child{
+    padding-left: 0px;
+    padding-right: 15px;
+}

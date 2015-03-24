@@ -11,7 +11,8 @@ angular.module('vivirnacoruna', [   'ionic',
                                     'uiGmapgoogle-maps',
                                     'ui.bootstrap',
                                     'gettext',
-                                    'LocalStorageModule'
+                                    'LocalStorageModule',
+                                    'angular-datepicker'
 ])
 
 .run(function($ionicPlatform,$rootScope) {
@@ -133,9 +134,6 @@ angular.module('vivirnacoruna', [   'ionic',
 
     .config(function($ionicConfigProvider) {
 
-
-        // note that you can also chain configs
-        $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
     })
     .run(function (gettextCatalog,localStorageService) {
         var previous_language = localStorageService.get("language");
