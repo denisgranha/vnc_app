@@ -38,9 +38,8 @@ angular.module('vivirnacoruna.controllers', [])
                 }
 
 
-                Events.getCategory($scope.eventos[index],function(category){
-                    $scope.eventos[index].icon = category.icon;
-                });
+                var category = Events.getCategory($scope.eventos[index]);
+                $scope.eventos[index].marker = category.marker;
             });
         }
 
@@ -209,10 +208,21 @@ angular.module('vivirnacoruna.controllers', [])
             window.open($rootScope.backend + "/?p="+$scope.evento.ID, '_system');
         }
 
+        $scope.openUrl = function(url){
+            window.open(url,'_system');
+        }
+
 
         Events.get($stateParams.eventoId,function(response){
             $ionicLoading.hide();
             $scope.evento = response;
+
+            var category = Events.getCategory(response);
+            $scope.category = category.name;
+
+                $scope.evento.post_content = $scope.evento.post_content.replace("<a","<span");
+                $scope.evento.post_content = $scope.evento.post_content.replace("</a>","</span>");
+
         },
         function(error){
             //TODO Notificar error
@@ -226,6 +236,9 @@ angular.module('vivirnacoruna.controllers', [])
 
 .controller('AxendaCtrl', function($scope,Events,dateFilter,$state,$ionicLoading) {
 
+        //Fecha del título
+        $scope.date = new Date();
+
 
         $scope.data_evento = new Date();//dateFilter(new Date(), 'yyyy-MM-dd');
 
@@ -236,12 +249,6 @@ angular.module('vivirnacoruna.controllers', [])
         $scope.eventos = [];
         $scope.eventos2 = [];
 
-        $scope.options = {
-            format: 'yyyy-mm-dd', // ISO formatted date
-            onClose: function(e) {
-                // do something when the picker closes
-            }
-        }
 
         $scope.showEvents = function(date_selected){
 
@@ -260,9 +267,13 @@ angular.module('vivirnacoruna.controllers', [])
             Events.interval(start.getTime(),end.getTime(),function(response){
                     $scope.eventos = [];
                     $scope.eventos2 = [];
-                $ionicLoading.hide();
+                    $ionicLoading.hide();
+
                     for(i=0;i<response.length;i++){
+
+
                         for(j=0;j<response[i].categories.length;j++){
+
                             if($scope.categories["Exposicións"].ids.indexOf(response[i].categories[j].term_id) > -1){
                                 //TODO CAMBIAR POR WHILE
                                 j=response[i].categories.length;
@@ -271,6 +282,7 @@ angular.module('vivirnacoruna.controllers', [])
                             else{
                                 j=response[i].categories.length;
                                 $scope.eventos.push(response[i]);
+
                             }
                         }
                     }
@@ -282,6 +294,15 @@ angular.module('vivirnacoruna.controllers', [])
             });
 
         };
+
+        $scope.getColor = function(event){
+            var category = Events.getCategory(event);
+
+            return category.color;
+
+        }
+
+
 
         $scope.showEvents($scope.data_evento);
 

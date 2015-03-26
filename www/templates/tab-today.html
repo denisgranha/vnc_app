@@ -15,21 +15,20 @@
                                 options="'options'"
                                 click="'open'"
                                 doRebuildAll="'true'"
-                                icon="'icon'"
+                                icon="'marker'"
                                 >
                         </ui-gmap-markers>
                     </ui-gmap-google-map>
 
-        <button class="boton-prezo button" ng-class="prices[filters.price].class" ng-click="changue_price()"> {{prices[filters.price].name}}</button>
+        <button class="boton-prezo" ng-class="prices[filters.price].class" ng-click="changue_price()"> {{prices[filters.price].name}}</button>
 
 
 
                <div class="list list-inset">
 
-               <div class="color-vnc boton-categorias item item-input" ng-click="showPopup()">
+               <div class="fondo-vnc boton-categorias item item-input" ng-click="showPopup()">
                     {{categories[filters.category].name}}
-                   &nbsp;
-                   <i class="icon ion-arrow-down-b "></i>
+                   <i class="icon ion-arrow-down-b icono-dereita"></i>
                 </div>
                    <!--
                    <label class="item item-input item-select text-center color-vnc">

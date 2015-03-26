@@ -1,17 +1,28 @@
-<ion-view title={{evento.post_title}} cache-view="false">
-    <ion-content class="has-header">
-        <div class="list card">
-            <div class="item item-avatar">
+<ion-view cache-view="false">
 
+    <ion-nav-title>
+        {{category}}
+    </ion-nav-title>
+    <ion-content class="has-header">
+
+
+            <div class="padding">
                 <span class="item-note">
                       {{evento.start_date*1000 | date}}
                     </span>
 
                 <p>
+            </div>
+            <div class="item item-body center">
+                <h2>{{evento.post_title}}</h2>
+            </div>
+            <div class="item item-avatar">
+                <p>
                     <i class="icon ion-location"></i>
                     {{evento.location_name}}
                     <br>
                     {{evento.location}}
+                </p>
                 </p>
                 <p>
                     <i class="icon ion-clock"></i>
@@ -29,8 +40,7 @@
 
             <div class="item item-body">
 
-
-                <p ng-bind-html="evento.post_content"></p>
+                <p class="bubble padding" ng-bind-html="evento.post_content"></p>
 
             </div>
 
@@ -51,7 +61,7 @@
                 </a>
             </div>
 
-        </div>
+
     </ion-content>
 
 

@@ -13,55 +13,69 @@ angular.module('vivirnacoruna.services', [])
             {
                 name: "Audiovisual",
                 ids: [76,264,261],
-                icon: "img/audiovisual.svg"
+                marker: "img/audiovisual.svg",
+                color: "#aba000",
+                icon: "ion-videocamera"
             },
 
             "Charlas":
             {
                 name: "Charlas",
                 ids: [78],
-                icon: "img/charlas.svg"
+                marker: "img/charlas.svg",
+                color: "#b86e71",
+                icon: "ion-speakerphone"
             },
 
             "Escénicas" :
             {
                 name: "Escénicas",
                 ids: [258,259,80,260,81,192],
-                icon: "img/escenicas.svg"
+                marker: "img/escenicas.svg",
+                color: "#f06eaa"
             },
 
             "Familiar":
             {
                 name: "Familiar",
                 ids: [109],
-                icon: "img/familiar.svg"
+                marker: "img/familiar.svg",
+                color: "#6dcff6"
             },
 
             "Música" :
             {
                 name: "Música",
                 ids: [69,265,271],
-                icon: "img/musica.svg"
+                marker: "img/musica.svg",
+                color: "#005952",
+                icon: "ion-mic-c"
             },
 
             "Letras" :
             {
                 name: "Letras",
                 ids: [72,268,267,266,609],
-                icon: "img/general.svg"
+                marker: "img/general.svg",
+                color: "#f18c62",
+                icon: "ion-ios-bookmarks"
             },
 
             "Inauguracións":
             {
                 name: "Inauguracións",
                 ids: [182],
-                icon: "img/inauguraciones.svg"
+                marker: "img/inauguraciones.svg",
+                color: "#605ca8",
+                icon: "ion-wineglass"
             },
             "Exposicións":
             {
                 name: "Exposicións",
                 ids: [93,182],
-                icon: "img/exposiciones.svg"
+                marker: "img/exposiciones.svg",
+                color: "#605ca8",
+                icon: "ion-camera"
             }
         };
 
@@ -113,13 +127,13 @@ angular.module('vivirnacoruna.services', [])
             callback(categories);
         },
 
-        getCategory: function(event,callback){
+        getCategory: function(event){
+
             for (var category in categories){
 
                 for(i=0;i<event.categories.length;i++){
                     if(categories[category].ids.indexOf(event.categories[i].term_id) > -1){
-                        callback(categories[category]);
-                        break;
+                        return categories[category];
                     }
                 }
 

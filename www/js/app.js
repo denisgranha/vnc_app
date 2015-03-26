@@ -11,8 +11,7 @@ angular.module('vivirnacoruna', [   'ionic',
                                     'uiGmapgoogle-maps',
                                     'ui.bootstrap',
                                     'gettext',
-                                    'LocalStorageModule',
-                                    'angular-datepicker'
+                                    'LocalStorageModule'
 ])
 
 .run(function($ionicPlatform,$rootScope) {

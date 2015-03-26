@@ -1,12 +1,45 @@
-
-.labels {
-    color: indianred;
-    background-color: white;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    white-space: nowrap;
+/* Colores de categoria y aplicación*/
+.fondo-vnc{
+    background-color: #f18c62 ;
 }
+
+.color-vnc{
+    color: #f18c62 ;
+}
+
+.exposicions{
+
+}
+
+.inauguracions{
+
+}
+
+.letras{
+
+}
+
+.audiovisuais{
+
+}
+
+.charlas{
+
+}
+
+.escenicas{
+
+}
+
+.exposicions{
+
+}
+
+.familiar{
+
+}
+/* Ajustes de titulo */
+
 
 .padding-top{
     padding-top: 10%;
@@ -14,23 +47,91 @@
 
 
 .background, .background .pane, .background, .background {
-    background-color: #f18c62 !important;
+    background-color: #f18c62 ;
 }
 
-.title, .tabs, .bar,.tabs-default{
+.tabs,.tabs-default{
+    /* sin important no va en android */
     background-color: #f18c62 !important;
+    background-image: none;
 }
 
-.title{
-    margin: 0px !important;
+.center{
+    text-align: center;
 }
 
-.color-vnc{
-    background-color: #f18c62 !important;
+.item-avatar, .item-body{
+    background-color: #f18c62 ;
+    border-width: 0px;
+}
+
+.item-avatar p{
+    color: white;
+    font-weight: 300;
+}
+
+.item-avatar h2{
+    color: white;
+    font-weight: 900;
+}
+
+.item-body h2{
+    color: white;
+    font-weight: 900;
+}
+
+.nav-bar-title{
+    color: white;
+}
+
+.button-clear{
+    color: white !important;
+}
+
+.bubble
+{
+    position: relative;
+
+    background: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.bubble:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 20px 15px;
+    border-color: #FFFFFF transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    margin-left: -20px;
+    top: -15px;
+    left: 20%;
+}
+
+
+.item-note{
+    color: white;
+}
+
+.bar{
+    border-bottom: 1px solid;
+    border-bottom-color: white;
+}
+
+.title,.bar{
+    margin: 0px ;
+    background-color: #f18c62 ;
+    background-image: none;
+
 }
 
 .buscar{
-    background-color: white !important;
+    background-color: white ;
 }
 
 .dia{
@@ -66,6 +167,25 @@
     margin-left: 78%;
     /* z-index: 7; */
     position: absolute;
+    background-color: #615F5F;
+    color: #FFF;
+    opacity: 0.8;
+    border-color: #ddd;
+    display: inline-block;
+    border-radius: 50%;
+    min-width: 52px;
+    min-height: 47px;
+    border-width: 1px;
+    border-style: solid;
+
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 42px;
+
+
+
 }
 
 .boton-categorias{
@@ -77,4 +197,27 @@
 .placeholder-icon:last-child{
     padding-left: 0px;
     padding-right: 15px;
+}
+
+.icono-dereita{
+    right: 11px;
+    position: absolute;
+}
+
+/* PAGINA DE CALENDARIO */
+.boton-data{
+    color: white;
+    border: 1px solid;
+    border-color: white;
+    width: 100%;
+}
+.boton-data input{
+    color: white;
+}
+
+/* CALLOUT */
+.bs-callout {
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
 }
