@@ -10,8 +10,7 @@ angular.module('vivirnacoruna', [   'ionic',
                                     'vivirnacoruna.services',
                                     'uiGmapgoogle-maps',
                                     'ui.bootstrap',
-                                    'gettext',
-                                    'LocalStorageModule'
+                                    'gettext'
 ])
 
 .run(function($ionicPlatform,$rootScope) {
@@ -132,14 +131,5 @@ angular.module('vivirnacoruna', [   'ionic',
     })
 
     .config(function($ionicConfigProvider) {
-
-    })
-    .run(function (gettextCatalog,localStorageService) {
-        var previous_language = localStorageService.get("language");
-        if(previous_language){
-            gettextCatalog.setCurrentLanguage(previous_language);
-        }
-        else{
-            gettextCatalog.setCurrentLanguage('gl');
-        }
+        $ionicConfigProvider.tabs.position("top");
     });

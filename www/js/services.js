@@ -6,7 +6,9 @@ angular.module('vivirnacoruna.services', [])
             "Todas" :
             {
                 name: "Todas",
-                ids: []
+                ids: [],
+                color: "#f18c62",
+                icon: "ion-ios-circle-outline"
             },
 
             "Audiovisual" :
@@ -32,7 +34,8 @@ angular.module('vivirnacoruna.services', [])
                 name: "Escénicas",
                 ids: [258,259,80,260,81,192],
                 marker: "img/escenicas.svg",
-                color: "#f06eaa"
+                color: "#f06eaa",
+                icon: "icon-escenicas6"
             },
 
             "Familiar":
@@ -40,7 +43,8 @@ angular.module('vivirnacoruna.services', [])
                 name: "Familiar",
                 ids: [109],
                 marker: "img/familiar.svg",
-                color: "#6dcff6"
+                color: "#6dcff6",
+                icon: "icon-familia"
             },
 
             "Música" :
@@ -75,7 +79,7 @@ angular.module('vivirnacoruna.services', [])
                 ids: [93,182],
                 marker: "img/exposiciones.svg",
                 color: "#605ca8",
-                icon: "ion-camera"
+                icon: "icon-expo"
             }
         };
 

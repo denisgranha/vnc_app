@@ -2,6 +2,8 @@ angular.module('vivirnacoruna.controllers', [])
 
 .controller('DashCtrl', function($scope,Events,uiGmapGoogleMapApi,Location,$state,$ionicLoading,$ionicPopup) {
 
+        $scope.hidetabs = false;
+
 
         //Pone el tamaño del mapa via jquery
         $('.angular-google-map-container').css('height', ($(window).height() / 1.65));
@@ -314,12 +316,10 @@ angular.module('vivirnacoruna.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope,gettextCatalog,localStorageService) {
-
-        $scope.setLanguage = function(language){
-            gettextCatalog.setCurrentLanguage(language);
-            localStorageService.set("language",language);
-        };
+.controller('AccountCtrl', function($scope) {
+    $scope.goUrl = function(url){
+        window.open(url, '_system');
+    }
 })
 
 .controller('SearchResultCtrl', function($scope,$stateParams,Events,$state,$ionicLoading) {

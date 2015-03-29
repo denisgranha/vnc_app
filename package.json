@@ -2,6 +2,10 @@
   "name": "vivirnacoruna",
   "version": "1.0.0",
   "description": "vivirnacoruna: An Ionic project",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/denisgranha/vivirnacoruna.git"
+  },
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
