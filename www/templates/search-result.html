@@ -1,15 +1,11 @@
-<ion-view title="Resultados de pesquisar: <strong>{{query}}</strong>" cache-view="false">
+<ion-view title="Resultados" cache-view="false">
     <ion-content class="has-header" >
-
-
         <ul class="list">
-            <li class="item" ng-repeat="evento in eventos" ng-click="goEvento(evento.ID)">
+            <a class="item item-thumbnail-left item-icon-right bs-callout" ng-style="{ 'border-left-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
+                <img ng-src={{evento.image}} ng-show="evento.image">
                 {{evento.post_title}}
-                -
-                <small ng-repeat="category in evento.categories">
-                    {{category.name}}
-                </small>
-            </li>
+                <i class="icon ion-plus-circled" ng-style="{ 'color': getColor(evento)}"></i>
+            </a>
         </ul>
     </ion-content>
 </ion-view>

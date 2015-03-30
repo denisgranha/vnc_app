@@ -1,52 +1,36 @@
 <ion-view cache-view="false">
+
     <ion-nav-title>
         <span class="dia">{{date | date:'d'}}</span>
         <span class="mes">{{date | date:'MMM'}}'</span>
         <span class="ano">{{date | date:'yy'}}</span>
     </ion-nav-title>
+
     <ion-content>
 
-
-
-                    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-                        <ui-gmap-markers
-                                models='filtrados'
-                                idKey="'ID'"
-                                coords="'coords'"
-                                options="'options'"
-                                click="'open'"
-                                doRebuildAll="'true'"
-                                icon="'marker'"
-                                >
-                        </ui-gmap-markers>
-                    </ui-gmap-google-map>
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+            <ui-gmap-markers
+                    models='filtrados'
+                    idKey="'ID'"
+                    coords="'coords'"
+                    options="'options'"
+                    click="'open'"
+                    doRebuildAll="'true'"
+                    icon="'marker'"
+                    >
+            </ui-gmap-markers>
+        </ui-gmap-google-map>
 
         <button class="boton-prezo" ng-class="prices[filters.price].class" ng-click="changue_price()"> {{prices[filters.price].name}}</button>
 
+        <div class="list list-inset">
 
+           <div class="fondo-vnc boton-categorias item item-input" ng-click="showPopup()">
+                {{categories[filters.category].name}}
+               <i class="icon ion-arrow-down-b icono-dereita"></i>
+            </div>
 
-               <div class="list list-inset">
-
-               <div class="fondo-vnc boton-categorias item item-input" ng-click="showPopup()">
-                    {{categories[filters.category].name}}
-                   <i class="icon ion-arrow-down-b icono-dereita"></i>
-                </div>
-                   <!--
-                   <label class="item item-input item-select text-center color-vnc">
-                       <div class="input-label">
-                               {{'Categoría' | translate}}:
-                       </div>
-
-                       <select ng-model="filters.category" class="color-vnc">
-                           <option ng-repeat="category in categories">{{category.name}}</option>
-                       </select>
-                   </label>
-                   -->
-               </div>
-
-
-
-
+        </div>
 
         <form ng-submit="buscar(texto)">
 
@@ -59,9 +43,6 @@
             </div>
         </form>
 
-
     </ion-content>
-
-
 
 </ion-view>
