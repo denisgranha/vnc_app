@@ -4,7 +4,9 @@
 
 (function(){
     angular.module('vivirnacoruna')
-        .run(function($ionicPlatform,$rootScope) {
+        .run(function($ionicPlatform,$rootScope,$window) {
+
+            $window.localStorage.clear();
 
             $ionicPlatform.ready(function() {
 
@@ -18,7 +20,6 @@
                     // org.apache.cordova.statusbar required
                     StatusBar.styleDefault();
                 }
-
             });
         })
         .run(function($rootScope){

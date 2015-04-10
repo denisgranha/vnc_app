@@ -1,5 +1,4 @@
 
-
 angular.module('vivirnacoruna', [   'ionic',
                                     'vivirnacoruna.controllers',
                                     'vivirnacoruna.services',

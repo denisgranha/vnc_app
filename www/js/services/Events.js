@@ -127,17 +127,17 @@
                 prices: function(callback,error){
                     callback([
                         {
-                            name:   'Todos',
+                            name:   'TODOS',
                             class:  "button-light"
                         },
 
                         {
-                            name:   'Gratuitos',
+                            name:   'GRATIS',
                             class:  "button-energized"
                         },
 
                         {
-                            name:   "De pago",
+                            name:   "PAGO",
                             class:  "button-positive"
                         }
                     ]);

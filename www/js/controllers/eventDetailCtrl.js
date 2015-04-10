@@ -4,7 +4,7 @@
 
 (function(){
     angular.module('vivirnacoruna.controllers')
-        .controller('EventDetailCtrl', function($scope,$stateParams,Events,$ionicLoading,$rootScope) {
+        .controller('EventDetailCtrl', function($scope,$stateParams,Events,$ionicLoading,$rootScope,$window) {
 
             $scope.shareAnywhere = function() {
 
@@ -13,7 +13,8 @@
                  window.plugins.socialsharing.share($scope.evento.post_content, $scope.evento.title, $scope.evento.image, $scope.evento.guid)}
                  else
                  */
-                window.plugins.socialsharing.share($scope.evento.post_content, null,null, $scope.evento.guid)
+                var url = $rootScope.backend + "/?p="+$scope.evento.ID;
+                $window.plugins.socialsharing.share($scope.evento.post_title+"\n"+url);
             }
 
 

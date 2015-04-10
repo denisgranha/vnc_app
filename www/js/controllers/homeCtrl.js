@@ -4,7 +4,8 @@
 
 (function(){
     angular.module('vivirnacoruna.controllers')
-        .controller('HomeCtrl', function($scope,Events,uiGmapGoogleMapApi,Location,$state,$ionicLoading,$ionicPopup) {
+        .controller('HomeCtrl', function($scope,Events,uiGmapGoogleMapApi,Location,$state,$ionicLoading,$ionicPopup,$window) {
+
 
             $scope.hidetabs = false;
 
@@ -22,6 +23,16 @@
                 category: "Todas",
                 price: 0
             };
+
+            if($window.localStorage['selected_category'] != undefined){
+                $scope.filters.category = window.localStorage['selected_category'];
+            }
+
+            if($window.localStorage['selected_price'] != undefined){
+                $scope.filters.price = Number(window.localStorage['selected_price']);
+            }
+
+
 
 
             function assignCords(index){
@@ -68,6 +79,9 @@
 
                     $ionicLoading.hide();
 
+                    $scope.apply_filters($scope.filters.price,$scope.filters.category);
+
+
                 },
                 function(error){
                     //TODO Notificar error
@@ -81,7 +95,11 @@
 
             Events.prices(function(precios){
                 $scope.prices = precios;
-            })
+
+                if($window.localStorage['selected_price'] != undefined){
+                    $scope.filters.price = Number(window.localStorage['selected_price']);
+                }
+            });
 
 
 
@@ -94,6 +112,9 @@
             });
 
             $scope.apply_filters  = function(price,category){
+
+                $window.localStorage['selected_category'] = category;
+                $window.localStorage['selected_price'] = price;
 
                 $scope.filtrados = [];
 

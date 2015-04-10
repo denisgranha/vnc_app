@@ -1,4 +1,7 @@
-<ion-view title="Resultados" cache-view="false">
+<ion-view cache-view="false">
+    <ion-nav-title>
+        Resultados
+    </ion-nav-title>
     <ion-content class="has-header" >
         <ul class="list">
             <a class="item item-thumbnail-left item-icon-right bs-callout" ng-style="{ 'border-left-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">

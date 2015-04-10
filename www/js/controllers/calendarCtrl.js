@@ -4,13 +4,21 @@
 
 (function(){
     angular.module('vivirnacoruna.controllers')
-        .controller('CalendarCtrl', function($scope,Events,dateFilter,$state,$ionicLoading) {
+        .controller('CalendarCtrl', function($scope,Events,dateFilter,$state,$ionicLoading,$window) {
 
-            //Fecha del título
+            if($window.localStorage['selected_date'] != undefined){
+                //Fecha del título
+                $scope.data_evento = new Date($window.localStorage['selected_date']);
+            }
+            else{
+                //Fecha del título
+                $scope.data_evento = new Date();
+            }
+
+
+
+
             $scope.date = new Date();
-
-
-            $scope.data_evento = new Date();
 
             Events.categories(function(categories){
                 $scope.categories = categories;
@@ -25,6 +33,7 @@
 
             $scope.showEvents = function(date_selected){
 
+                $window.localStorage['selected_date'] = date_selected.toString();
 
                 var start = new Date(date_selected);
                 start.setHours(0,0,0,0);

@@ -3,6 +3,5 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="28.35px" height="28.35px" viewBox="0 0 28.35 28.35" enable-background="new 0 0 28.35 28.35" xml:space="preserve">
-<path fill="none" stroke="#605CA6" stroke-width="3" stroke-miterlimit="10" d="M22.945,14.175c0-4.846-3.923-8.767-8.77-8.767
-	s-8.77,3.921-8.77,8.767s3.923,8.767,8.77,8.767S22.945,19.021,22.945,14.175z"/>
+<ellipse fill="#605CA6" cx="14.182" cy="14.171" rx="13.911" ry="13.888"/>
 </svg>
