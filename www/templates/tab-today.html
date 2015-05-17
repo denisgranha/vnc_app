@@ -21,13 +21,16 @@
             </ui-gmap-markers>
         </ui-gmap-google-map>
 
-        <button class="boton-prezo" ng-class="prices[filters.price].class" ng-click="changue_price()"> {{prices[filters.price].name}}</button>
+
+        <div class="item item-input boton-prezo" ng-click="changue_price()">
+            {{filters.price_name}}
+            <i class="icon ion-social-euro icono-dereita"></i>
+        </div>
 
         <div class="list list-inset">
-
            <div class="fondo-vnc boton-categorias item item-input" ng-click="showPopup()">
                 {{categories[filters.category].name}}
-               <i class="icon ion-arrow-down-b icono-dereita"></i>
+               <i class="icon ion-plus icono-dereita"></i>
             </div>
 
         </div>
@@ -38,10 +41,16 @@
             <div class="list list-inset">
                 <label class="item item-input buscar">
                     <input type="text" ng-model="texto">
-                    <i class="icon ion-search placeholder-icon"></i>
+                    <!--<i class="icon ion-search placeholder-icon"></i>-->
+                    <span class="vnc-lupa placeholder-icon"></span>
                 </label>
             </div>
         </form>
+
+        <!-- Error raro en ios, hace que se muestre el texto de selección de preción en el div de arriba -->
+        <div style="visibility: hidden;">
+            {{filters.price_name}}
+        </div>
 
     </ion-content>
 

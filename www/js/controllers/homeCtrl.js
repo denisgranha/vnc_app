@@ -21,7 +21,8 @@
 
             $scope.filters = {
                 category: "Todas",
-                price: 0
+                price: 0,
+                price_name: "Todos"
             };
 
             if($window.localStorage['selected_category'] != undefined){
@@ -40,16 +41,25 @@
                     $scope.eventos[index].coords = {
                         latitude : location.results[0].geometry.location.lat,
                         longitude : location.results[0].geometry.location.lng
-                    }
+                    };
 
+                    var title = "";
+                    if($scope.eventos[index].post_title.length > 10){
+                        title = $scope.eventos[index].post_title.substring(0,10) + "...";
+                    }
+                    else{
+                        title = $scope.eventos[index].post_title;
+                    }
                     $scope.eventos[index].options =
                     {
-                        labelAnchor: "5 0"
-                    }
+                        labelAnchor: "-5 50",
+                        labelClass: "marker-label",
+                        labelContent: title
+                    };
 
                     $scope.eventos[index].open=  function(){
                         $state.go("tab.evento-detail",{eventoId:$scope.eventos[index].ID});
-                    }
+                    };
 
 
                     var category = Events.getCategory($scope.eventos[index]);
@@ -105,6 +115,7 @@
 
             $scope.changue_price = function(){
                 $scope.filters.price = ($scope.filters.price+1) % 3;
+                $scope.filters.price_name = $scope.prices[$scope.filters.price].name;
             };
 
             Events.categories(function(categories){
@@ -195,11 +206,11 @@
             $scope.showPopup = function(){
                 myPopup = $ionicPopup.show({
                     templateUrl: 'templates/categories.html',
-                    title: 'Seleccione a categoría desexada',
-                    scope: $scope,
-                    buttons: [
+                    //title: 'Seleccione a categoría desexada',
+                    scope: $scope
+                    /*buttons: [
                         { text: 'Cancelar' }
-                    ]
+                    ]*/
                 });
             };
 

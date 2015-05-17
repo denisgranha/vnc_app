@@ -21,20 +21,20 @@
             <div class="item item-avatar">
 
                 <p>
-                    <i class="icon ion-location"></i>
+                    <span class="vnc-geo"></span>
                     {{evento.location_name}}
                     <br>
                     {{evento.location}}
                 </p>
 
                 <p>
-                    <i class="icon ion-clock"></i>
+                    <span class="vnc-hora"></span>
                     {{evento.start_date*1000 | date:"HH:mm"}}
 
                 </p>
 
                 <p>
-                    <i class="icon ion-ios-circle-outline"></i>
+                    <span class="vnc-precio"></span>
                     {{evento.price}}
                 </p>
 
@@ -51,19 +51,20 @@
             <div class="item tabs tabs-secondary tabs-icon-left">
 
                 <a class="tab-item enlaces" ng-click="shareAnywhere()">
-                    <i class="icon ion-share"></i>
+                    <span class="vnc-compartir"></span>
                     Compartir
                 </a>
 
                 <a ng-click="openLink()" class="tab-item enlaces"  >
-                    <i class="icon ion-earth"></i>
+                    <span class="vnc-web"></span>
                     Ver na web
                 </a>
-
+                <!--
                 <a ng-click="goMap()" class="tab-item enlaces">
                     <i class="icon ion-map"></i>
                     Abrir no Mapa
                 </a>
+                -->
             </div>
 
     </ion-content>

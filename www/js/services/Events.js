@@ -11,7 +11,7 @@
                 {
                     name: "Todas",
                     ids: [],
-                    color: "#f18c62",
+                    color: "#b5b5b5",
                     icon: "ion-ios-circle-outline"
                 },
 
@@ -127,17 +127,17 @@
                 prices: function(callback,error){
                     callback([
                         {
-                            name:   'TODOS',
+                            name:   'Ver todos os eventos',
                             class:  "button-light"
                         },
 
                         {
-                            name:   'GRATIS',
+                            name:   'Ver so eventos gratuítos',
                             class:  "button-energized"
                         },
 
                         {
-                            name:   "PAGO",
+                            name:   "Ver so eventos de pago",
                             class:  "button-positive"
                         }
                     ]);
