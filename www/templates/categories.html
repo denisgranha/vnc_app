@@ -1,6 +1,8 @@
-<div class="list">
-    <a class="item item-icon-left lista-categorias" ng-repeat="category in categories" ng-click="selectCategory(category)">
-        <i class="icon ion-record" ng-style="{ 'color': category.color}"></i>
-        {{category.name}}
-    </a>
-</div>
+
+        <div class="categorias-container padding">
+            <a class="item item-icon-left lista-categorias" ng-repeat="category in categories" ng-click="selectCategory(category)">
+                <i class="icon ion-record" ng-style="{ 'color': category.color}"></i>
+
+                {{category.name}}
+            </a>
+        </div>

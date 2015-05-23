@@ -1,0 +1,39 @@
+
+<div class="padding date-container">
+    <div class="row padding text-center">
+        <div class="col date-text">
+            {{data_evento | date:'EEEE'}}
+        </div>
+    </div>
+    <div class="row padding text-center">
+        <span ng-click="addDay()" class="ion-ios-plus-empty icon col"></span>
+        <span ng-click="addMonth()" class="ion-ios-plus-empty icon col"></span>
+        <span ng-click="addYear()" class="ion-ios-plus-empty icon col"></span>
+    </div>
+    <div class="row padding text-center">
+        <div class="col date-text padding-bottom">
+            {{data_evento | date:"d"}}
+        </div>
+
+        <div class="col date-text date-bordes padding-bottom">
+            {{data_evento | date:"MMMM"}}
+        </div>
+
+        <div class="col date-text padding-bottom">
+            {{data_evento | date:"yyyy"}}
+        </div>
+    </div>
+
+    <div class="row padding text-center">
+        <span ng-click="removeDay()" class="ion-ios-minus-empty icon col"></span>
+        <span ng-click="removeMonth()" class="ion-ios-minus-empty icon col"></span>
+        <span ng-click="removeYear()" class="ion-ios-minus-empty icon col"></span>
+
+    </div>
+
+    <div class="row padding">
+        <button class="button boton-select-data" ng-click="closePopover()">
+            Aceptar
+        </button>
+    </div>
+</div>

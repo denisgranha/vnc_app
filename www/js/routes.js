@@ -31,6 +31,15 @@
                     }
                 })
 
+                .state('tab.today-error', {
+                    url: '/today/error',
+                    views: {
+                        'tab-dash': {
+                            templateUrl: 'templates/abarrote.html'
+                        }
+                    }
+                })
+
                 .state('tab.search-result', {
                     url: '/search/:query',
                     views: {
@@ -57,6 +66,15 @@
                         'tab-friends': {
                             templateUrl: 'templates/tab-calendar.html',
                             controller: 'CalendarCtrl'
+                        }
+                    }
+                })
+
+                .state('tab.calendar-error', {
+                    url: '/calendar/error',
+                    views: {
+                        'tab-friends': {
+                            templateUrl: 'templates/abarrote.html'
                         }
                     }
                 })

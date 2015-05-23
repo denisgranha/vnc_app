@@ -2,41 +2,52 @@
     <ion-nav-title>
         Vivir na Coruña
     </ion-nav-title>
-  <ion-content class="has-header">
+  <ion-content class="has-header padding">
 
       <!--<img class="full-image" src="img/vnc.jpg" >-->
-      <div class="puntos padding">
+      <div class="puntos padding text-center">
           <h3>
               BENVIDO@ A VIVIR NA CORUÑA!
           </h3>
-          <h2>
-              Un lugar onde atopar de xeito sinxelo os eventos culturais da cidade.
-          </h2>
-          Non só aqueles concertos, exposicións ou obras de teatro dos lugares máis emblemáticos e coñecidos,
-          que tamén, senón que queremos que sexa unha porta aberta a todas esas actividades que, a cotío, pasan
-          inadvertidas para gran parte da poboación.
+          <h4>
+              Un lugar onde atopar de xeito sinxelo os eventos culturais da cidade
+          </h4>
+          <!--
+          <p>
+              Non só aqueles concertos, exposicións ou obras de teatro dos lugares máis emblemáticos e coñecidos,
+              que tamén, senón que queremos que sexa unha porta aberta a todas esas actividades que, a cotío, pasan
+              inadvertidas para gran parte da poboación.
+          </p>
+          -->
+
       </div>
 
-
-      <div class="item tabs tabs-secondary tabs-icon-left">
-          <a class="tab-item enlaces" ng-click="goUrl('https://twitter.com/vivirnacoruna')">
-              <i class="icon ion-social-twitter"></i>
-          </a>
-          <a class="tab-item enlaces" ng-click="goUrl('https://www.facebook.com/vivirnacoruna')">
-              <i class="icon ion-social-facebook"></i>
-          </a>
-          <a class="tab-item enlaces" ng-click="goUrl('https://instagram.com/vivirnacoruna')">
-              <i class="icon ion-social-instagram"></i>
-          </a>
-
-          <a class="tab-item enlaces" ng-click="goUrl('https://plus.google.com/+VivirnacorunaEs/videos')">
-              <i class="icon ion-social-googleplus"></i>
-          </a>
-
-          <a class="tab-item enlaces" ng-click="goUrl('http://vivirnacoruna.es')">
-              <i class="icon ion-earth"></i>
-          </a>
+      <div class="button-bar-inline redes text-center">
+          <span ng-click="goUrl('https://www.facebook.com/vivirnacoruna')" class="vnc-icono-facebook"></span>
+          <span ng-click="goUrl('https://twitter.com/vivirnacoruna')" class="vnc-icono_twitter"></span>
+          <span ng-click="goUrl('https://plus.google.com/+VivirnacorunaEs')" class="vnc-icono_google_plus"></span>
+          <span ng-click="goUrl('https://instagram.com/vivirnacoruna')" class="vnc-icono_instagram"><span class="path1"></span><span class="path2"></span></span>
+          <span ng-click="goUrl('http://vivirnacoruna.es/feed/')" class="vnc-icono_rss"></span>
       </div>
+
+      {{plugins}}
+      <button ng-click="sendEmail()" class="button button-block boton-info">
+          Contacta con nós
+      </button>
+
+      <button ng-click="goUrl('http://vivirnacoruna.es')" class="button button-block boton-info">
+          Visita a nosa web
+      </button>
+      <h5 class="copyright text-center">
+          &copy; Vivir Na Coruña
+      </h5>
 
   </ion-content>
+    <div class="bar bar-footer">
+        <div class="title">
+            <h5 class="copyright">
+                Aplicación desenvolvida por Denis Granha
+            </h5>
+        </div>
+    </div>
 </ion-view>

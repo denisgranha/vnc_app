@@ -4,7 +4,7 @@
 
 (function(){
     angular.module('vivirnacoruna.controllers')
-        .controller('CalendarCtrl', function($scope,Events,dateFilter,$state,$ionicLoading,$window) {
+        .controller('CalendarCtrl', function($scope,Events,dateFilter,$state,$ionicLoading,$window,$ionicPopover) {
 
             if($window.localStorage['selected_date'] != undefined){
                 //Fecha del título
@@ -43,7 +43,8 @@
 
                 $ionicLoading.show({
                     content: '<i class="icon ion-loading-c"></i>',
-                    animation: 'fade-in'
+                    animation: 'fade-in',
+                    duration: 10000
                 });
 
                 Events.interval(start.getTime(),end.getTime(),function(response){
@@ -73,6 +74,7 @@
                     function(error){
                         //TODO Notificar error
                         $ionicLoading.hide();
+                        $state.go("tab.calendar-error");
                     });
 
             };
@@ -90,8 +92,55 @@
 
             $scope.goEvento = function(id){
                 $state.go("tab.evento-axenda",{eventoId:id});
-            }
+            };
 
+
+            $scope.selectDate = function(){
+
+            };
+
+            $ionicPopover.fromTemplateUrl('templates/date.html', {
+                scope: $scope
+            }).then(function(popover) {
+                $scope.popover = popover;
+            });
+
+
+            $scope.showPopup  = function($event) {
+                $scope.popover.show($event);
+            };
+
+            $scope.closePopover = function() {
+                $scope.showEvents($scope.data_evento);
+                $scope.popover.hide();
+            };
+
+
+            $scope.addDay = function(){
+                $scope.data_evento.setDate($scope.data_evento.getDate()+1);
+            };
+
+            $scope.removeDay = function(){
+                $scope.data_evento.setDate($scope.data_evento.getDate()-1);
+            };
+
+
+            $scope.addMonth = function(){
+                $scope.data_evento.setMonth($scope.data_evento.getMonth()+1);
+            };
+
+            $scope.removeMonth = function(){
+                $scope.data_evento.setMonth($scope.data_evento.getMonth()-1);
+            };
+
+
+            $scope.addYear = function(){
+                $scope.data_evento.setFullYear($scope.data_evento.getFullYear()+1);
+            };
+
+            $scope.removeYear = function(){
+                $scope.data_evento.setFullYear($scope.data_evento.getFullYear()-1);
+            };
 
 
         });

@@ -9,32 +9,31 @@
   <ion-content class="has-header" >
 
       <div class="list">
-          <a class="item item-thumbnail-left item-icon-right bs-callout" ng-style="{ 'border-left-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
+          <a class="item item-image item-icon-right bs-callout" ng-style="{ 'border-right-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
               <img ng-src={{evento.image}} ng-show="evento.image">
-              {{evento.post_title}}
-              <i class="icon ion-plus-circled" ng-style="{ 'color': getColor(evento)}"></i>
+              <div class="texto-imaxe item ">{{evento.post_title}}</div>
+
 
           </a>
 
-          <a class="item item-thumbnail-left item-icon-right bs-callout" ng-style="{ 'border-left-color': getColor(evento)}"  ng-repeat="evento in eventos2 | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
+          <a class="item item-image item-icon-right bs-callout" ng-style="{ 'border-right-color': getColor(evento)}"  ng-repeat="evento in eventos2 | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
               <img ng-src={{evento.image}} ng-show="evento.image">
-              {{evento.post_title}}
-              <i class="icon ion-plus-circled" ng-style="{ 'color': getColor(evento)}"></i>
+              <div class="texto-imaxe item ">{{evento.post_title}}</div>
           </a>
 
       </div>
-
   </ion-content>
 
+
     <ion-footer-bar  align-title="center">
-
-        <label class="item item-input fondo-vnc boton-data">
-            <!--<span class="input-label" translate>Data</span>-->
+        <div ng-click="showPopup()" class="item item-input fondo-vnc boton-data">
+            <span class="input-label" ng-if="data_evento.getDate() != date.getDate()">{{data_evento| date:'longDate'}}</span>
+            <span class="input-label" ng-if="data_evento.getDate() == date.getDate()">Escolle unha data</span>
+            <!--
             <input type="date" ng-model="data_evento" ng-change="showEvents(data_evento)">
-            <i class="icon ion-arrow-down-b icono-dereita"></i>
-        </label>
-
-
+            -->
+            <i class="icon ion-plus icono-dereita"></i>
+        </div>
     </ion-footer-bar>
 
 </ion-view>

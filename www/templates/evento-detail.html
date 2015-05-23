@@ -1,63 +1,72 @@
 <ion-view cache-view="false">
 
     <ion-nav-title>
-        {{category}}
+        <div class="nombre-categoria">{{category}}</div>
     </ion-nav-title>
 
-    <ion-content class="has-header">
+    <ion-content class="has-header background">
 
-            <div class="padding">
-                <span class="item-note">
-                      {{evento.start_date*1000 | date}}
-                    </span>
-
-                <p>
+            <div class="padding evento-data">
+                <span class="dia">{{evento.start_date*1000 | date:'d'}}</span>
+                <span class="mes">{{evento.start_date*1000 | date:'MMMM'}}</span>
+                <span class="ano">{{evento.start_date*1000 | date:'yy'}}</span>
             </div>
 
-            <div class="item item-body center">
-                <h2>{{evento.post_title}}</h2>
+            <div class="padding evento-titulo">
+                <h4 ng-style="{ 'color': getColor(evento)}">{{evento.post_title}}</h4>
             </div>
 
-            <div class="item item-avatar">
+            <div class="evento-datos padding">
 
-                <p>
-                    <span class="vnc-geo"></span>
-                    {{evento.location_name}}
-                    <br>
-                    {{evento.location}}
-                </p>
+                <div class="row">
+                    <span class="col-10 vnc-geo evento-iconos padding"></span>
+                    <div class="col-90">
+                            {{evento.location_name}}
+                        <br>
+                            {{evento.location}}
+                    </div>
+                </div>
 
-                <p>
-                    <span class="vnc-hora"></span>
-                    {{evento.start_date*1000 | date:"HH:mm"}}
+                <div class="row">
+                    <span class="col-10 icon ion-ios-clock evento-iconos padding col-center"></span>
+                    <div class="col-90 col-center">
+                        {{evento.start_date*1000 | date:"HH:mm"}}
+                    </div>
 
-                </p>
+                </div>
 
-                <p>
-                    <span class="vnc-precio"></span>
-                    {{evento.price}}
-                </p>
+                <div class="row">
+                    <span class="col-10 vnc-precio evento-iconos padding col-center"></span>
+                    <div class="col-90 col-center">
+                        {{evento.price}}
+                    </div>
+                </div>
 
             </div>
 
-            <div class="item item-image">
+            <div class="item item-image evento-image" ng-style="{'border-color': getColor(evento)}">
                 <img ng-src={{evento.image}} ng-show="evento.image">
             </div>
 
-            <div class="item item-body">
-                <p class="bubble padding" ng-bind-html="evento.post_content"></p>
+            <div class=" item item-body"> <!--item item-body -->
+                <p ng-style="{ 'background-color': getColor(evento)}"
+                   class="evento-descripcion bubble padding"
+                   ng-bind-html="evento.post_content">
+
+                </p>
             </div>
 
-            <div class="item tabs tabs-secondary tabs-icon-left">
+            <div class="row evento-enlaces padding">
 
-                <a class="tab-item enlaces" ng-click="shareAnywhere()">
-                    <span class="vnc-compartir"></span>
+                <a class="col text-center padding borde-derecho" ng-click="shareAnywhere()">
                     Compartir
+                    <span class="icon ion-android-share-alt padding"></span>
                 </a>
 
-                <a ng-click="openLink()" class="tab-item enlaces"  >
-                    <span class="vnc-web"></span>
+                <a ng-click="openLink()" class="col text-center padding"  >
                     Ver na web
+                    <span class="icon ion-android-globe padding"></span>
+
                 </a>
                 <!--
                 <a ng-click="goMap()" class="tab-item enlaces">

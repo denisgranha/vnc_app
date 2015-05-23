@@ -21,16 +21,24 @@
 
             $ionicLoading.show({
                 content: '<i class="icon ion-loading-c"></i>',
-                animation: 'fade-in'
+                animation: 'fade-in',
+                duration: 10000
             });
+
+            $scope.getColor = function(event){
+                var category = Events.getCategory(event);
+
+                return category.color;
+
+            };
 
             $scope.openLink = function(){
                 window.open($rootScope.backend + "/?p="+$scope.evento.ID, '_system');
-            }
+            };
 
             $scope.openUrl = function(url){
                 window.open(url,'_system');
-            }
+            };
 
 
             Events.get($stateParams.eventoId,function(response){
@@ -40,8 +48,10 @@
                     var category = Events.getCategory(response);
                     $scope.category = category.name;
 
-                    $scope.evento.post_content = $scope.evento.post_content.replace("<a","<span");
-                    $scope.evento.post_content = $scope.evento.post_content.replace("</a>","</span>");
+                    while($scope.evento.post_content.indexOf("<a") != -1){
+                        $scope.evento.post_content = $scope.evento.post_content.replace("<a","<span");
+                        $scope.evento.post_content = $scope.evento.post_content.replace("</a>","</span>");
+                    }
 
                 },
                 function(error){

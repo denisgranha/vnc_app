@@ -10,7 +10,8 @@
 
             $ionicLoading.show({
                 content: '<i class="icon ion-loading-c"></i>',
-                animation: 'fade-in'
+                animation: 'fade-in',
+                duration: 10000
             });
 
             Events.search($scope.query,function(result){
@@ -20,6 +21,7 @@
                 function(error){
                     //TODO Notificar error
                     $ionicLoading.hide();
+                    $state.go("tab.today-error");
                 });
 
             $scope.goEvento = function(id){

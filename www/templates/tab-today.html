@@ -29,7 +29,7 @@
 
         <div class="list list-inset">
            <div class="fondo-vnc boton-categorias item item-input" ng-click="showPopup()">
-                {{categories[filters.category].name}}
+                {{categories[filters.category].select_name }}
                <i class="icon ion-plus icono-dereita"></i>
             </div>
 
@@ -39,9 +39,8 @@
 
 
             <div class="list list-inset">
-                <label class="item item-input buscar">
+                <label class="item item-input input-buscar">
                     <input type="text" ng-model="texto">
-                    <!--<i class="icon ion-search placeholder-icon"></i>-->
                     <span class="vnc-lupa placeholder-icon"></span>
                 </label>
             </div>

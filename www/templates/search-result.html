@@ -4,10 +4,9 @@
     </ion-nav-title>
     <ion-content class="has-header" >
         <ul class="list">
-            <a class="item item-thumbnail-left item-icon-right bs-callout" ng-style="{ 'border-left-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
+            <a class="item item-image item-icon-right bs-callout" ng-style="{ 'border-right-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
                 <img ng-src={{evento.image}} ng-show="evento.image">
-                {{evento.post_title}}
-                <i class="icon ion-plus-circled" ng-style="{ 'color': getColor(evento)}"></i>
+                <div class="texto-imaxe item ">{{evento.post_title}}</div>
             </a>
         </ul>
     </ion-content>

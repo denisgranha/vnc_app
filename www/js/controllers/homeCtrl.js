@@ -4,7 +4,7 @@
 
 (function(){
     angular.module('vivirnacoruna.controllers')
-        .controller('HomeCtrl', function($scope,Events,uiGmapGoogleMapApi,Location,$state,$ionicLoading,$ionicPopup,$window) {
+        .controller('HomeCtrl', function($scope,Events,uiGmapGoogleMapApi,Location,$state,$ionicLoading,$ionicPopup,$window,$ionicPopover) {
 
 
             $scope.hidetabs = false;
@@ -22,7 +22,7 @@
             $scope.filters = {
                 category: "Todas",
                 price: 0,
-                price_name: "Todos"
+                price_name: "Escolle un prezo"
             };
 
             if($window.localStorage['selected_category'] != undefined){
@@ -75,7 +75,8 @@
 
             $ionicLoading.show({
                 content: '<i class="icon ion-loading-c"></i>',
-                animation: 'fade-in'
+                animation: 'fade-in',
+                duration: 10000
             });
 
             Events.today(function(response){
@@ -96,6 +97,7 @@
                 function(error){
                     //TODO Notificar error
                     $ionicLoading.hide();
+                    $state.go("tab.today-error");
                 });
 
             uiGmapGoogleMapApi.then(function(maps) {
@@ -201,23 +203,27 @@
             },true);
 
 
-            //Popup De Categorias
-            var myPopup;
-            $scope.showPopup = function(){
-                myPopup = $ionicPopup.show({
-                    templateUrl: 'templates/categories.html',
-                    //title: 'Seleccione a categoría desexada',
-                    scope: $scope
-                    /*buttons: [
-                        { text: 'Cancelar' }
-                    ]*/
-                });
+
+            $ionicPopover.fromTemplateUrl('templates/categories.html', {
+                scope: $scope
+            }).then(function(popover) {
+                $scope.popover = popover;
+            });
+
+
+            $scope.showPopup  = function($event) {
+                $scope.popover.show($event);
             };
+
+            $scope.closePopover = function() {
+                $scope.popover.hide();
+            };
+
 
             $scope.selectCategory = function(category){
                 $scope.filters.category = category.name;
-                myPopup.close();
-            }
+                $scope.popover.hide();
+            };
 
         });
 })();
