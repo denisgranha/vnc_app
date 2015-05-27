@@ -23,7 +23,8 @@
                     marker: "img/audiovisual.svg",
                     color: "#aba000",
                     icon: "ion-videocamera",
-                    select_name: "Audiovisual"
+                    select_name: "Audiovisual",
+                    bubble: "bubble-audio"
                 },
 
                 "Charlas":
@@ -33,7 +34,8 @@
                     marker: "img/charlas.svg",
                     color: "#b86e71",
                     icon: "ion-speakerphone",
-                    select_name: "Charlas"
+                    select_name: "Charlas",
+                    bubble: "bubble-cha"
                 },
 
                 "Escénicas" :
@@ -43,7 +45,8 @@
                     marker: "img/escenicas.svg",
                     color: "#f06eaa",
                     icon: "icon-escenicas6",
-                    select_name: "Escénicas"
+                    select_name: "Escénicas",
+                    bubble: "bubble-es"
                 },
 
                 "Familiar":
@@ -53,7 +56,8 @@
                     marker: "img/familiar.svg",
                     color: "#6dcff6",
                     icon: "icon-familia",
-                    select_name: "Familiar"
+                    select_name: "Familiar",
+                    bubble: "bubble-fam"
                 },
 
                 "Música" :
@@ -63,7 +67,8 @@
                     marker: "img/musica.svg",
                     color: "#005952",
                     icon: "ion-mic-c",
-                    select_name: "Música"
+                    select_name: "Música",
+                    bubble: "bubble-mus"
                 },
 
                 "Letras" :
@@ -73,7 +78,8 @@
                     marker: "img/general.svg",
                     color: "#f18c62",
                     icon: "ion-ios-bookmarks",
-                    select_name: "Letras"
+                    select_name: "Letras",
+                    bubble: "bubble-let"
                 },
 
                 "Inauguracións":
@@ -83,7 +89,8 @@
                     marker: "img/inauguraciones.svg",
                     color: "#605ca8",
                     icon: "ion-wineglass",
-                    select_name: "Inauguración"
+                    select_name: "Inauguración",
+                    bubble: "bubble-expo"
                 },
                 "Exposicións":
                 {
@@ -92,7 +99,8 @@
                     marker: "img/exposiciones.svg",
                     color: "#605ca8",
                     icon: "icon-expo",
-                    select_name: "Exposicións"
+                    select_name: "Exposicións",
+                    bubble: "bubble-expo"
                 }
             };
 

@@ -9,14 +9,14 @@
   <ion-content class="has-header" >
 
       <div class="list">
-          <a class="item item-image item-icon-right bs-callout" ng-style="{ 'border-right-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
+          <a class="item item-image calendar-image item-icon-right bs-callout" ng-style="{ 'border-right-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
               <img ng-src={{evento.image}} ng-show="evento.image">
               <div class="texto-imaxe item ">{{evento.post_title}}</div>
 
 
           </a>
 
-          <a class="item item-image item-icon-right bs-callout" ng-style="{ 'border-right-color': getColor(evento)}"  ng-repeat="evento in eventos2 | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
+          <a class="item item-image calendar-image item-icon-right bs-callout" ng-style="{ 'border-right-color': getColor(evento)}"  ng-repeat="evento in eventos2 | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
               <img ng-src={{evento.image}} ng-show="evento.image">
               <div class="texto-imaxe item ">{{evento.post_title}}</div>
           </a>

@@ -50,6 +50,7 @@
 
             <div class=" item item-body"> <!--item item-body -->
                 <p ng-style="{ 'background-color': getColor(evento)}"
+                   ng-class="getBubble(evento)"
                    class="evento-descripcion bubble padding"
                    ng-bind-html="evento.post_content">
 

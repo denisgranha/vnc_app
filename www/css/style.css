@@ -255,13 +255,41 @@
     border-style: solid;
     border-width: 0 20px 15px;
     /*border-color: #FFFFFF transparent;*/
-    border-color: #f8f8f8 transparent;
+    /*border-color: #f8f8f8 transparent;*/
     display: block;
     width: 0;
     z-index: 1;
     margin-left: -20px;
     top: -15px;
     left: 20%;
+}
+
+.bubble-expo:after{
+    border-color: #605ca8 transparent;
+}
+
+.bubble-let:after{
+    border-color: #f18c62 transparent;
+}
+
+.bubble-audio:after{
+    border-color: #aba000 transparent;
+}
+
+.bubble-fam:after{
+    border-color: #6dcff6 transparent;
+}
+
+.bubble-cha:after{
+    border-color: #b86e71 transparent;
+}
+
+.bubble-mus:after{
+    border-color: #005952 transparent;
+}
+
+.bubble-es:after{
+    border-color: #f06eaa;
 }
 
 
@@ -550,6 +578,21 @@ body{
     width: 100%;
     font-size: large;
     font-weight: 200;
+}
+
+.custom-footer{
+    height: 65px;
+}
+
+.custom-title{
+    height: inherit !important;
+}
+
+.calendar-image{
+    /*
+    min-height: 200px;
+    max-height: 200px;
+    */
 }
 
 

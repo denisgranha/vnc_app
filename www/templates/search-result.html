@@ -4,7 +4,7 @@
     </ion-nav-title>
     <ion-content class="has-header" >
         <ul class="list">
-            <a class="item item-image item-icon-right bs-callout" ng-style="{ 'border-right-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
+            <a class="item calendar-image item-image item-icon-right bs-callout" ng-style="{ 'border-right-color': getColor(evento)}" ng-repeat="evento in eventos | orderBy:'start_date' " ng-click="goEvento(evento.ID)">
                 <img ng-src={{evento.image}} ng-show="evento.image">
                 <div class="texto-imaxe item ">{{evento.post_title}}</div>
             </a>

@@ -26,9 +26,14 @@
             });
 
             $scope.getColor = function(event){
-                var category = Events.getCategory(event);
+                if(event){
+                    var category = Events.getCategory(event);
 
-                return category.color;
+                    return category.color;
+                }
+                else{
+                    return "#b5b5b5";
+                }
 
             };
 
@@ -61,6 +66,12 @@
 
             $scope.goMap = function(){
                 window.open("https://www.google.es/maps/place/"+encodeURIComponent($scope.evento.location), '_system');
+            }
+
+            $scope.getBubble = function(evento){
+                if(evento){
+                    return Events.getCategory(evento).bubble;
+                }
             }
         });
 })();
